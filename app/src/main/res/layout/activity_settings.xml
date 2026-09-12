@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nastavenia"
+            android:textColor="@color/text"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <!-- ================= Vzhlad ================= -->
+
+        <TextView style="@style/SectionTitle" android:text="Vzhľad" />
+
+        <TextView
+            style="@style/Hint"
+            android:text="Appka je tmavá od začiatku. Čierny režim ide ešte o krok ďalej: pozadie je čisto čierne, takže sa na OLED displeji vôbec nerozsvieti a šetrí batériu. Veľkosť písma sa pripočítava k tomu, čo máš nastavené v systéme." />
+
+        <TextView style="@style/Label" android:text="Režim" />
+
+        <RadioGroup
+            android:id="@+id/rgRezim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rbRezimSystem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Podľa systému"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+            <RadioButton
+                android:id="@+id/rbRezimZakladny"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Základný (tmavý)"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+            <RadioButton
+                android:id="@+id/rbRezimCierny"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Čierny (šetrí batériu)"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+        </RadioGroup>
+
+        <TextView style="@style/Label" android:text="Veľkosť písma (−1 až 3)" />
+
+        <TextView
+            style="@style/Hint"
+            android:text="0 je základná, krok je zhruba jeden bod." />
+
+        <EditText
+            android:id="@+id/etPismo"
+            style="@style/Field"
+            android:inputType="numberSigned" />
+
+        <!-- ================= Doveryhodne zariadenia ================= -->
+
+        <TextView style="@style/SectionTitle" android:text="Dôveryhodné zariadenia" />
+
+        <TextView
+            style="@style/Hint"
+            android:text="Jeden riadok = jedno zariadenie, vo formáte Meno=IP. Keď je na Wi-Fi aspoň jedno z nich, stráženie je vypnuté. IP si na routeri rezervuj cez DHCP, inak sa časom zmení." />
+
+        <EditText
+            android:id="@+id/etDevices"
+            style="@style/Field"
+            android:gravity="top"
+            android:hint="Mobil=192.168.1.50&#10;Mobil-partner=192.168.1.50"
+            android:inputType="textMultiLine"
+            android:minLines="4" />
+
+        <!-- ================= Detekcia ================= -->
+
+        <TextView style="@style/SectionTitle" android:text="Detekcia" />
+
+        <TextView style="@style/Label" android:text="Ochranné okno (sekundy)" />
+
+        <TextView
+            style="@style/Hint"
+            android:text="Keď sa po odfotení pripojíš na Wi-Fi do tohto času, fotky sa zahodia a mail neodíde. Kým telefón po vstupe do dosahu asociuje na AP a dostane DHCP, môže ubehnúť 10–20 s – ak ti chodia fotky vlastného príchodu, zvýš to na 45–60." />
+
+        <EditText
+            android:id="@+id/etGrace"
+            style="@style/Field"
+            android:inputType="number" />
+
+        <TextView style="@style/Label" android:text="Koľko neúspešných kôl znamená odchod" />
+
+        <TextView
+            style="@style/Hint"
+            android:text="Telefón v spánku občas ping zahodí, preto jedno zmeškané kolo nestačí. Pri 4 kolách a skene každých 15 s sa stráženie zapne asi minútu po tom, čo ti telefón zmizne zo siete." />
+
+        <EditText
+            android:id="@+id/etAwayRounds"
+            style="@style/Field"
+            android:inputType="number" />
+
+        <TextView style="@style/Label" android:text="Sken siete – bežne / pri strážení (sekundy)" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etPollIdle"
+                style="@style/Field"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/etPollFast"
+                style="@style/Field"
+                android:layout_width="0dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <TextView style="@style/Label" android:text="Citlivosť na pohyb (1 – 100)" />
+
+        <TextView
+            style="@style/Hint"
+            android:text="Vyššie číslo = citlivejšie. Ak chodia plané poplachy od tieňov a záclon, znižuj." />
+
+        <EditText
+            android:id="@+id/etSensitivity"
+            style="@style/Field"
+            android:inputType="number" />
+
+        <TextView style="@style/Label" android:text="Šírka fotky (px) / kvalita JPEG (60 – 100)" />
+
+        <TextView
+            style="@style/Hint"
+            android:text="Šírka 0 = maximum, čo kamera vie. Kamera vyberie najbližšie vyššie podporované rozlíšenie, skutočne použité nájdeš v denníku. Na rozoznanie tváre z 3 – 4 m chceš aspoň 1920, pokojne aj 2560. Tri fotky pri 1920/92 vyjdú rádovo na 3 – 6 MB v jednom maile, čo Gmail (limit 25 MB) bez problémov unesie." />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etPhotoWidth"
+                style="@style/Field"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/etJpegQuality"
+                style="@style/Field"
+                android:layout_width="0dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <TextView style="@style/Label" android:text="Fotiek na jeden poplach / rozostup (s) / pokoj po dávke (s)" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etBurst"
+                style="@style/Field"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/etBurstGap"
+                style="@style/Field"
+                android:layout_width="0dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/etCooldown"
+                style="@style/Field"
+                android:layout_width="0dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/RowSwitch">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Brať odmietnuté TCP spojenie ako prítomnosť"
+                    android:textColor="@color/text"
+                    android:textSize="15sp" />
+
+                <TextView
+                    style="@style/Hint"
+                    android:text="Nechaj vypnuté. Zapni len vtedy, keď ti zariadenie filtruje ICMP a ping naň nefunguje ani ručne – na niektorých sieťach odpovedá router aj za adresy, na ktorých nič nie je, a stráženie sa potom nikdy nezapne." />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swTcpKnock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/RowSwitch">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Predná kamera"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swFrontCam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/RowSwitch">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Prisvietiť bleskom"
+                    android:textColor="@color/text"
+                    android:textSize="15sp" />
+
+                <TextView
+                    style="@style/Hint"
+                    android:text="Bez neho sú nočné zábery čierne, so zábleskom je zas jasné, že tam niečo je." />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swFlash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- ================= Mail ================= -->
+
+        <TextView style="@style/SectionTitle" android:text="Mail" />
+
+        <TextView
+            style="@style/Hint"
+            android:text="Gmail vyžaduje „app password“, nie bežné heslo k účtu. Odporúčam na odosielanie použiť samostatný účet – keby ti niekto telefón vzal, nedostane sa k tvojej hlavnej schránke." />
+
+        <TextView style="@style/Label" android:text="Komu posielať (viac adries oddeľ čiarkou)" />
+
+        <EditText
+            android:id="@+id/etMailTo"
+            style="@style/Field"
+            android:hint="alerts@example.com"
+            android:inputType="textEmailAddress" />
+
+        <TextView style="@style/Label" android:text="Odosielajúci účet" />
+
+        <EditText
+            android:id="@+id/etSmtpUser"
+            style="@style/Field"
+            android:hint="odosielatel@gmail.com"
+            android:inputType="textEmailAddress" />
+
+        <TextView style="@style/Label" android:text="App password" />
+
+        <EditText
+            android:id="@+id/etSmtpPass"
+            style="@style/Field"
+            android:inputType="textPassword" />
+
+        <TextView style="@style/Label" android:text="SMTP server / port" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etSmtpHost"
+                style="@style/Field"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:inputType="textUri" />
+
+            <EditText
+                android:id="@+id/etSmtpPort"
+                style="@style/Field"
+                android:layout_width="0dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <!-- ================= NAS ================= -->
+
+        <!--
+          Popisky, poradie aj rozlozenie (jedno pole na riadok) su rovnake vo
+          vsetkych appkach - docs/shared-standard.md 2.6. Predtym boli polia po dvoch
+          v riadku s jednym spolocnym popiskom ("NAS (IP) / share"), co sa
+          nedalo zosuladit so zvyskom.
+        -->
+        <TextView style="@style/SectionTitle" android:text="@string/up_title" />
+
+        <TextView style="@style/Hint" android:text="@string/up_hint" />
+
+        <TextView style="@style/Label" android:text="@string/up_host" />
+
+        <EditText
+            android:id="@+id/etNasHost"
+            style="@style/Field"
+            android:layout_width="match_parent"
+            android:inputType="text" />
+
+        <TextView style="@style/Label" android:text="@string/up_share" />
+
+        <EditText
+            android:id="@+id/etNasShare"
+            style="@style/Field"
+            android:layout_width="match_parent"
+            android:inputType="text" />
+
+        <TextView style="@style/Label" android:text="@string/up_path" />
+
+        <EditText
+            android:id="@+id/etNasPath"
+            style="@style/Field"
+            android:layout_width="match_parent"
+            android:inputType="text" />
+
+        <TextView style="@style/Label" android:text="@string/up_file" />
+
+        <EditText
+            android:id="@+id/etNasFile"
+            style="@style/Field"
+            android:layout_width="match_parent"
+            android:inputType="text" />
+
+        <TextView style="@style/Label" android:text="@string/up_user" />
+
+        <EditText
+            android:id="@+id/etNasUser"
+            style="@style/Field"
+            android:layout_width="match_parent"
+            android:inputType="text" />
+
+        <TextView style="@style/Label" android:text="@string/up_pass" />
+
+        <EditText
+            android:id="@+id/etNasPass"
+            style="@style/Field"
+            android:layout_width="match_parent"
+            android:inputType="textPassword" />
+
+        <LinearLayout style="@style/RowSwitch">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Kontrolovať automaticky"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swAutoUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <TextView style="@style/Label" android:text="Ako často kontrolovať (hodiny)" />
+
+        <EditText
+            android:id="@+id/etUpdateHours"
+            style="@style/Field"
+            android:inputType="number" />
+
+        <!--
+          Prenesene data (Wi-Fi zvlast, mobilne zvlast). Prvky su prazdne
+          zamerne: texty plni `Prenos.kt`, ktory je rovnaky vo vsetkych
+          appkach — devat kopii tych istych retazcov v deviatich strings.xml
+          by sa rozislo uz pri prvej oprave preklepu.
+        -->
+        <TextView
+            android:id="@+id/tvPrenosNadpis"
+            style="@style/SectionTitle" />
+
+        <TextView
+            android:id="@+id/tvPrenos"
+            style="@style/Hint" />
+
+        <TextView
+            android:id="@+id/tvPrenosPoznamka"
+            style="@style/Hint" />
+
+        <Button
+            android:id="@+id/btnPrenosReset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="26dp"
+            android:background="@drawable/btn_bg"
+            android:stateListAnimator="@null"
+            android:text="Uložiť"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFFFF"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="24dp" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,20 @@
+<resources>
+    <color name="bg">#FF10141A</color>
+    <color name="surface">#FF1A212B</color>
+    <color name="text">#FFE8EDF2</color>
+    <color name="text_dim">#FF8C99A8</color>
+    <color name="accent">#FF3D8BFD</color>
+    <color name="ok">#FF32C77F</color>
+    <color name="warn">#FFE0A422</color>
+    <color name="alarm">#FFE5484D</color>
+    <color name="icon_bg">#FF10141A</color>
+
+    <!-- Paticka s verziou (docs/shared-standard.md 2.6). Mena su vo vsetkych appkach
+         rovnake, hodnoty sa lisia podla palety konkretnej appky. -->
+    <color name="ver_text">#FF8C99A8</color>
+    <color name="ver_warn">#FFE0A422</color>
+
+    <!-- Farba ikon v hlavicke (obnovit, nastavenia, lupa). Meno je vo vsetkych
+         appkach rovnake, hodnota podla palety - viz docs/shared-standard.md 2.6. -->
+    <color name="ikona">#FF8C99A8</color>
+</resources>

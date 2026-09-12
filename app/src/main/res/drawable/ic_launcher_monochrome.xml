@@ -1,0 +1,17 @@
+<!-- Themed icons (Android 13+): launcher si ju prefarbi sam. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group
+        android:scaleX="2.15"
+        android:scaleY="2.15"
+        android:translateX="28.2"
+        android:translateY="26.8">
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M12,2 L20.5,5.2 V11.4 C20.5,17 17,22.1 12,23.4 C7,22.1 3.5,17 3.5,11.4 V5.2 Z
+                              M12,6.9 L6.4,11.6 V18.1 H10.6 V14.4 H13.4 V18.1 H17.6 V11.6 Z" />
+    </group>
+</vector>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Čierny režim. Mená sú tie isté ako vo `values/colors.xml`.
+
+  Táto appka je tmavá od začiatku (#10141A), takže tu nejde o „tmavý vzhľad" —
+  ide o batériu. Na OLED displeji sa čierny pixel nerozsvieti vôbec, kým
+  #10141A svieti takmer ako svetlý. Karty sú preto len o kúsok nad čiernou,
+  aby bolo vidieť ich hranicu, a plocha pod nimi je zhasnutá.
+-->
+<resources>
+    <color name="bg">#FF000000</color>
+    <color name="surface">#FF0E1216</color>
+    <color name="text">#FFE8EDF2</color>
+    <color name="text_dim">#FF8C99A8</color>
+    <color name="accent">#FF4F9BFF</color>
+    <color name="ok">#FF3FD68C</color>
+    <color name="warn">#FFE8B23A</color>
+    <color name="alarm">#FFF05C61</color>
+    <color name="icon_bg">#FF000000</color>
+
+    <color name="ver_text">#FF8C99A8</color>
+    <color name="ver_warn">#FFE8B23A</color>
+    <color name="ikona">#FF8C99A8</color>
+</resources>

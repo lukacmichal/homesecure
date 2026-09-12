@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">HomeSecure</string>
+
+    <!-- Spolocne pre vsetky appky: ponuka novej verzie po tichej kontrole pri starte. -->
+    <string name="up_prompt_title">Nová verzia</string>
+    <string name="up_prompt_msg">Na NAS-e je verzia %1$s, máš %2$s. Nainštalovať teraz?</string>
+    <string name="up_prompt_yes">Nainštalovať</string>
+    <string name="up_prompt_later">Neskôr</string>
+
+    <!-- Paticka s verziou (docs/shared-standard.md 2.6). Doslovne rovnaka vo vsetkych appkach.
+         %1$s nazov appky, %2$s nainstalovana verzia, %3$s verzia na NAS-e -->
+    <string name="ver_footer">%1$s %2$s · NAS %3$s</string>
+    <string name="ver_footer_new">%1$s %2$s · NAS %3$s ↑</string>
+    <string name="ver_none">—</string>
+
+    <!-- Sekcia Aktualizacie - doslovne rovnake znenie aj poradie vo vsetkych
+         appkach (docs/shared-standard.md 2.6). -->
+    <string name="up_title">Aktualizácie</string>
+    <string name="up_hint">Appka sa po spustení sama pozrie na NAS (len na domácej sieti, nie cez mobilné dáta). Sťahuje sa až po tvojom potvrdení.</string>
+    <string name="up_host">Adresa NAS-u</string>
+    <string name="up_share">Zdieľaný priečinok</string>
+    <string name="up_path">Podpriečinok appky</string>
+    <string name="up_file">Názov súboru</string>
+    <string name="up_user">SMB meno</string>
+    <string name="up_pass">SMB heslo</string>
+    <string name="up_check">Skontrolovať teraz</string>
+
+    <string name="channel_monitor_name">Monitoring</string>
+    <string name="channel_monitor_desc">Trvala notifikacia, kym strazenie bezi.</string>
+    <string name="channel_alert_name">Poplach</string>
+    <string name="channel_alert_desc">Upozornenie na zachyteny pohyb.</string>
+
+    <string name="state_disarmed">Doma - strazenie vypnute</string>
+    <string name="state_armed">Prec - strazi sa</string>
+    <string name="state_grace">Zachyteny pohyb - caka sa na overenie</string>
+    <string name="state_paused">Pozastavene</string>
+    <string name="state_no_devices">Nie su zadane doveryhodne zariadenia</string>
+    <string name="state_starting">Spustam, cakam na prvy sken…</string>
+    <string name="obnovit">Obnoviť</string>
+    <string name="nastavenia">Nastavenia</string>
+</resources>
