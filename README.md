@@ -13,6 +13,21 @@ Android · Kotlin · CameraX · minSdk 26
 
 ---
 
+## What it looks like
+
+| Someone is home | Settings |
+|---|---|
+| <img src="docs/screenshots/main.png" alt="Green status: someone is home, guarding is off" width="240"> | <img src="docs/screenshots/settings.png" alt="Trusted devices and the detection timings" width="240"> |
+
+One line answers the only question that matters — *am I guarding right now, and
+why not?* Under it is the scan log, because a security app that cannot show
+what it did in the last hour is asking to be trusted for nothing.
+
+The interface is Slovak. The devices, the addresses and the mail settings in
+the screenshots are placeholders.
+
+---
+
 ## How it works
 
 ```
