@@ -1,6 +1,6 @@
 # The shared app standard
 
-Eight Android apps in this account — a fuel price comparator, a music player,
+The Android apps in this account — among them a fuel price comparator, a music player,
 a weather app, a name-day calendar, a security camera, a stock ticker, a
 Wake-on-LAN remote and a training log — are built to one written standard.
 They do entirely different things. **They differ only in content and colour;
@@ -82,9 +82,10 @@ App name                          [custom action]  ↻   ⚙
 | Settings | 44×44dp gear, **always the rightmost element** |
 
 Settings is a **gear icon**, never a text link and never a button in the
-content. Until this was written down, five apps had solved it five different
+content. Until this was written down, the apps had solved it in five different
 ways: a gear in one, a `SETTINGS` text button in another, a link below the
-list in two more, and an item hidden under `⋮` in the last two. Five solutions
+list in two, a big button in the content in two more, and an item hidden
+under `⋮` in two others. Five solutions
 to one problem, and no way to guess where to look.
 
 The icon files themselves (`ic_obnovit`, `ic_nastavenia`, `ic_lupa`,
