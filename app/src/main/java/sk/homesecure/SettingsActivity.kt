@@ -66,13 +66,14 @@ class SettingsActivity : ZakladActivity() {
     private fun prenos() {
         findViewById<TextView>(R.id.tvPrenosNadpis).text = Prenos.NADPIS
         val hodnota = findViewById<TextView>(R.id.tvPrenos)
-        hodnota.text = Prenos.popis(this)
+        hodnota.text = Prenos.NACITAVAM
+        Prenos.nacitaj(this) { hodnota.text = Prenos.popis(it) }
         findViewById<TextView>(R.id.tvPrenosPoznamka).text = Prenos.POZNAMKA
         findViewById<Button>(R.id.btnPrenosReset).apply {
             text = Prenos.VYNULOVAT
             setOnClickListener {
-                Prenos.vynuluj(this@SettingsActivity)
-                hodnota.text = Prenos.popis(this@SettingsActivity)
+                hodnota.text = Prenos.NACITAVAM
+                Prenos.vynuluj(this@SettingsActivity) { hodnota.text = Prenos.popis(it) }
             }
         }
     }

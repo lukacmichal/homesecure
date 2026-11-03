@@ -275,13 +275,6 @@ class MonitorService : LifecycleService() {
                             )
                         }
                         store.done(event)
-                        // Do pocitadla dat. Mail s fotkami je najvacsi prenos,
-                        // aky appka spravi, a ako jediny ide HORE — na
-                        // mobilnych datach stoji rovnako ako stahovanie.
-                        // Base64 v prilohe nafukne subor o tretinu, preto
-                        // 4/3: pocitadlo ma byt horny odhad, nie prikraslenie.
-                        Prenos.zapis(this@MonitorService,
-                            photos.sumOf { it.length() } * 4 / 3)
                         EventLog.log("Mail odoslaný ($at, ${photos.size} fotiek)")
                         Status.update { it.copy(lastError = null) }
                         backoffMs = 15_000L

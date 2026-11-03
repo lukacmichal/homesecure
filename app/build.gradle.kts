@@ -41,8 +41,9 @@ android {
         // Vydanie 3. 9. 2026: pocitadlo prenesenych dat rozdelene na Wi-Fi
         // a mobilne (Prenos.kt, spolocny subor) a sirsi rozsah velkosti
         // pisma (-6 az +6 namiesto -1 az +3).
-        versionCode = 10
-        versionName = "1.9"
+        // 1.11 (28. 10. 2026, APPKY-4): pocitadlo dat z Androidu.
+        versionCode = 12
+        versionName = "1.11"
 
         buildConfigField("String", "NAS_HOST", nasField("NAS_HOST"))
         buildConfigField("String", "NAS_SHARE", nasField("NAS_SHARE"))

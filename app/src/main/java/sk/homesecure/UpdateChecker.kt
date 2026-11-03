@@ -28,7 +28,6 @@ object UpdateChecker {
         try {
             val target = ApkInstaller.downloadTarget(ctx, cfg.apkFileName)
             SmbUpdater.download(cfg, target)
-            Prenos.zapis(ctx, target.length())
 
             val remote = ApkInstaller.readVersionCode(ctx, target)
             if (remote == null) {

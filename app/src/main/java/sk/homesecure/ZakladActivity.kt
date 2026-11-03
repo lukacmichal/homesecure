@@ -31,11 +31,6 @@ open class ZakladActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        // Poistka pre pocitadlo dat: sietove kniznice appky su bez Androidu
-        // a bajty len nazbieraju ([Prenos.nazbieraj]). Tu je prvy bod, kde je
-        // po nich Context — bez tohto by prenos, ktory nikto vyslovne
-        // neodovzdal, v pocitadle chybal.
-        Prenos.odovzdaj(this)
         // Vratil sa z Nastaveni s inou velkostou pisma? Layout uz je nafukany
         // starym kontextom, takze jedina cesta je postavit obrazovku nanovo.
         if (Vzhlad.podpis(this) != vzhladPodpis) recreate()

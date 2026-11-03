@@ -3,7 +3,12 @@
     <!-- DayNight, nie obycajna AppCompat: appka je tmava od zaciatku, ale od
          28. 8. 2026 ma aj CIERNY rezim (values-night) kvoli vydrzi baterie
          na OLED. Bez DayNight by sa nocna paleta nikdy nepouzila. -->
+    <!--
+      Bez opt-outu Android 15+ kresli appku s targetSdk 35 pod stavovu listu
+      a navigaciu (nadpis pod hodinami, paticka pod gestom). docs/shared-standard.md 2.6.
+    -->
     <style name="Theme.HomeSecure" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowOptOutEdgeToEdgeEnforcement" tools:targetApi="35">true</item>
         <item name="android:windowBackground">@color/bg</item>
         <item name="android:textColor">@color/text</item>
         <item name="colorAccent">@color/accent</item>
