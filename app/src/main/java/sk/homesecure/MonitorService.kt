@@ -244,7 +244,14 @@ class MonitorService : LifecycleService() {
                     continue
                 }
 
-                val mail = Prefs.mail(this)
+                var mail = Prefs.mail(this)
+                // Heslo ku Gmailu je na NAS-e (Kluce.kt): prve upozornenie po
+                // aktualizacii moze prist skor, nez sa appka otvori.
+                if (!mail.isUsable && Prefs.chybaHesloMailu(this) &&
+                    withContext(Dispatchers.IO) { Prefs.stiahniKluce(this@MonitorService) }
+                ) {
+                    mail = Prefs.mail(this)
+                }
                 if (!mail.isUsable) {
                     Status.update { it.copy(lastError = "Mail nie je nastavený") }
                     delay(60_000)
@@ -323,6 +330,9 @@ class MonitorService : LifecycleService() {
                             EventLog.log("Kontrola aktualizácie zlyhala: ${outcome.message}")
                         else -> Unit
                     }
+                    // Spolu s verziou aj kluc z NAS-u — tak sa do telefonu dostane
+                    // heslo vymenene cez `nahraj-na-nas.ps1 -LenKluce`.
+                    withContext(Dispatchers.IO) { Prefs.stiahniKluce(this@MonitorService) }
                 }
             } catch (t: Throwable) {
                 EventLog.log("Chyba pri kontrole aktualizácie: ${t.message}")

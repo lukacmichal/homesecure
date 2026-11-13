@@ -42,18 +42,22 @@ android {
         // a mobilne (Prenos.kt, spolocny subor) a sirsi rozsah velkosti
         // pisma (-6 az +6 namiesto -1 az +3).
         // 1.11 (28. 10. 2026, APPKY-4): pocitadlo dat z Androidu.
-        versionCode = 12
-        versionName = "1.11"
+        // 1.12 (13) — 12. 11. 2026: heslo ku Gmailu uz nie je v APK — appka si
+        // ho stiahne z NAS-u (kluce.txt, Kluce.kt, docs/shared-standard.md 2.2b).
+        versionCode = 13
+        versionName = "1.12"
 
         buildConfigField("String", "NAS_HOST", nasField("NAS_HOST"))
         buildConfigField("String", "NAS_SHARE", nasField("NAS_SHARE"))
         buildConfigField("String", "NAS_USER", nasField("NAS_USER"))
         buildConfigField("String", "NAS_PASS", nasField("NAS_PASS"))
 
+        // Server, ucet a prijemca nie su tajne. Heslo (MAIL_PASS) sem NEPATRI:
+        // z APK by ho vytiahol kazdy, kto ma subor v ruke, a otvara celu
+        // schranku. Nahra ho nahraj-na-nas.ps1 do Homesecure\kluce.txt.
         buildConfigField("String", "MAIL_HOST", nasField("MAIL_HOST"))
         buildConfigField("String", "MAIL_PORT", nasField("MAIL_PORT"))
         buildConfigField("String", "MAIL_USER", nasField("MAIL_USER"))
-        buildConfigField("String", "MAIL_PASS", nasField("MAIL_PASS"))
         buildConfigField("String", "MAIL_TO", nasField("MAIL_TO"))
     }
 

@@ -137,6 +137,9 @@ class MainActivity : ZakladActivity() {
                 if (manual) toast("NAS je nedostupný.")
                 return@launch
             }
+            // NAS odpoveda — vezmi aj heslo ku Gmailu (Kluce.kt). Tak sa do
+            // telefonu dostane aj heslo vymenene cez `nahraj-na-nas.ps1 -LenKluce`.
+            withContext(Dispatchers.IO) { Prefs.stiahniKluce(this@MainActivity) }
             val current = ApkInstaller.currentVersionCode(this@MainActivity)
             val novsia = remote.code > current
             VersionUi.render(verFooter, remote.toString(), novsia)
@@ -243,7 +246,12 @@ class MainActivity : ZakladActivity() {
                 "nikdy nezapne."
         }
         if (!Prefs.mail(this).isUsable) {
-            problems += "• Nie je nastavený mail – fotky sa nemajú kam poslať."
+            problems += if (Prefs.chybaHesloMailu(this)) {
+                "• Appka ešte nemá heslo ku Gmailu – stiahne si ho z NAS-u, keď bude " +
+                    "doma (alebo ho doplň v Nastaveniach)."
+            } else {
+                "• Nie je nastavený mail – fotky sa nemajú kam poslať."
+            }
         }
 
         if (problems.isEmpty()) {

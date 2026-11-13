@@ -57,6 +57,7 @@ data class DetectConfig(
  *
  * Predvolby plni build zo spolocneho nas-credentials.local — ten isty
  * ucet, z ktoreho posielaju aj skenery akcii. Nastavenia appky ich prepisu.
+ * Heslo v builde nie je (od 1.12): doplna ho [Prefs.mail] z NAS-u ([Kluce]).
  */
 data class MailConfig(
     val smtpHost: String = BuildConfig.MAIL_HOST.ifBlank { "smtp.gmail.com" },
@@ -64,7 +65,7 @@ data class MailConfig(
     /** Odosielajuci ucet (samostatny Gmail, nie osobny). */
     val username: String = BuildConfig.MAIL_USER,
     /** Gmail "app password", nie bezne heslo k uctu. */
-    val password: String = BuildConfig.MAIL_PASS,
+    val password: String = "",
     /** Prijemca upozorneni - lubovolna adresa, meni sa v nastaveniach. */
     val to: String = BuildConfig.MAIL_TO
 ) {

@@ -169,9 +169,13 @@ object Prefs {
 
     private val defMail = MailConfig()
 
+    /** Meno hesla v kluce.txt na NAS-e — rovnake ako v nas-credentials.local. */
+    private const val KLUC_MAIL_PASS = "MAIL_PASS"
+
     /**
      * Prazdne ulozene pole znamena "nechaj predvolbu z buildu", nie "posielaj
      * bez prihlasenia" — inak by vymazanie pola umlcalo upozornenia natrvalo.
+     * Pri hesle je predvolbou kluc z NAS-u (v APK od 1.12 nie je).
      */
     fun mail(ctx: Context): MailConfig {
         val p = sp(ctx)
@@ -182,10 +186,22 @@ object Prefs {
             smtpPort = p.getInt(K_SMTP_PORT, defMail.smtpPort),
             username = s(K_SMTP_USER, defMail.username),
             password = secret(ctx).getString(K_SMTP_PASS, "").orEmpty()
-                .ifEmpty { defMail.password },
+                .ifEmpty { Kluce.hodnota(ctx, KLUC_MAIL_PASS) },
             to = s(K_MAIL_TO, defMail.to)
         )
     }
+
+    /** Appka este nema heslo z NAS-u (a ani prepis v Nastaveniach)? */
+    fun chybaHesloMailu(ctx: Context): Boolean =
+        secret(ctx).getString(K_SMTP_PASS, "").isNullOrEmpty() &&
+            Kluce.hodnota(ctx, KLUC_MAIL_PASS).isEmpty()
+
+    /**
+     * Stiahne heslo ku Gmailu z NAS-u (kluce.txt vedla APK). Blokuje — volaj
+     * mimo hlavneho vlakna; nedostupny NAS = false a ticho.
+     */
+    fun stiahniKluce(ctx: Context): Boolean =
+        Kluce.stiahni(ctx) { SmbUpdater.readText(update(ctx), Kluce.SUBOR) }
 
     fun saveMail(ctx: Context, c: MailConfig) {
         sp(ctx).edit()
@@ -194,10 +210,11 @@ object Prefs {
             .putString(K_SMTP_USER, c.username.trim())
             .putString(K_MAIL_TO, c.to.trim())
             .apply()
-        // To iste ako pri hesle k NAS-u: app password zhodny s tym z buildu
-        // neuklada, nech sa da zmenit na jednom mieste.
+        // To iste ako pri hesle k NAS-u: app password zhodny s tym z NAS-u sa
+        // neuklada, nech sa da zmenit na jednom mieste (nas-credentials.local
+        // + nahraj-na-nas.ps1 -LenKluce).
         secret(ctx).edit().apply {
-            if (c.password.isEmpty() || c.password == BuildConfig.MAIL_PASS) {
+            if (c.password.isEmpty() || c.password == Kluce.hodnota(ctx, KLUC_MAIL_PASS)) {
                 remove(K_SMTP_PASS)
             } else {
                 putString(K_SMTP_PASS, c.password)
